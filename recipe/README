@@ -1,0 +1,22 @@
+Prodigy Local
+
+Installation instructions
+
+Install prodigy
+
+```
+pip install <prodigy-dir>/prodigy-<version>.whl 
+
+```
+pip install .
+
+```
+## Run recipe locally  
+```
+python -m prodigy label-json tables_trial_labels recipe/pmctables_json.jsonl -F recipe/label-json.py
+```
+##Get annotations out
+
+'''
+python -m prodigy db-out tables_trial_labels > ./output_annotations.jsonl
+'''
