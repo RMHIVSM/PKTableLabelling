@@ -7,7 +7,6 @@ from io import StringIO
 import jsonlines
 from tqdm import tqdm
 
-
 def stringify_children(node):
     """
     Filters and removes possible Nones in texts and tails
@@ -65,7 +64,7 @@ def write_html(table_dicts, path):
 def create_jsonl(table_dicts, json_path):
     """Function to convert XML table dictionary to HTML then to JSONL file for input to prodigy"""
 
-    html_template = "<!DOCTYPE html><html><body><h1>{0}</h1><head><style> table, th, td {{border: 1px solid black;}}</style></head><body>{1}</body></html>"
+    html_template = "<!DOCTYPE html><html><body><h4>{0}</h4><head><style> table, th, td {{border: 1px solid black;}}</style></head><body>{1}</body></html>"
 
     html_data = []
     for i in table_dicts:
