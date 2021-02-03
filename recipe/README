@@ -1,18 +1,33 @@
 # Run Prodigy on Local 
 
-Installation instructions
+Installation instructions - from command line 
 
-Install pip
+Confirm python is installed 
 ```
-pip install .
+python
 ```
-Install all python packages needed 
+To install python (skip if not needed)
+```
+https://www.python.org/downloads/windows/
+```
+Confirm pip is installed 
+```
+pip help
+```
+
+To install pip (skip if not needed)
+```
+python get-pip.py
+#verify installation
+pip -V
+```
+
+To Install all python packages needed 
 ```
 pip install .
 ```
 
 Install prodigy
-
 ```
 pip install <prodigy-dir>/prodigy-<version>.whl 
 ```
