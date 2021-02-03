@@ -1,0 +1,8 @@
+setup.py
+pk_tables/__init__.py
+pk_tables/xml_preprocessing.py
+pk_tables.egg-info/PKG-INFO
+pk_tables.egg-info/SOURCES.txt
+pk_tables.egg-info/dependency_links.txt
+pk_tables.egg-info/requires.txt
+pk_tables.egg-info/top_level.txt
