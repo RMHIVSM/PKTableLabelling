@@ -2,14 +2,18 @@ import prodigy
 from prodigy.components.loaders import JSONL
 
 OPTIONS = [
-        {"id": 0, "text": "PK Parameters"},
-        {"id": 1, "text": "Covariates"},
-        {"id": 2, "text": "Other"}, 
-        {"id": 3, "text": "Unclear"}
+        {"id": 0, "text": "Non-compartmental Parameters"},
+        {"id": 1, "text": "Compartmental Parameters"},
+        {"id": 2, "text": "PBPK Parameters"},
+        {"id": 3, "text": "Unclear (Parameters)"},
+        {"id": 4, "text": "Covariates (Demographics)"},
+        {"id": 5, "text": "Covariates (Other)"},
+        {"id": 6, "text": "Not Relevant"},
+
 ]
 
 @prodigy.recipe("label-json")
- 
+
 def label_html(dataset, html_path):
      #Stream in htmls from a directory and label them from fixed field
 
@@ -18,7 +22,7 @@ def label_html(dataset, html_path):
         "stream": get_stream(html_path),
         "view_id": "choice",
         "config": {
-            "choice_style": "single",  # or "multiple"
+            "choice_style": "multiple",  # or "single"
             # Automatically accept and submit the answer if an option is
             # selected (only available for single-choice tasks)
             #"choice_auto_accept": True,

@@ -40,3 +40,5 @@ python -m prodigy label-json tables_trial_labels data/json/pmctables_json.jsonl 
 ```
 python -m prodigy db-out tables_trial_labels > ./output_annotations.jsonl
 ```
+
+

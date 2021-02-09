@@ -7,10 +7,9 @@ WORKDIR ./
 #prodigy-1.10.5-cp36.cp37.cp38-cp36m.cp37m.cp38-linux_x86_64.whl .
 
 # Copy files
-COPY ./ ./my_dir
+COPY . ./
 
 # pip install python deps
-RUN pip install .
 RUN pip install ./recipe/prodigy-1.10.5-cp36.cp37.cp38-cp36m.cp37m.cp38-linux_x86_64.whl
 
 
