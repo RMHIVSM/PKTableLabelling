@@ -27,6 +27,8 @@ def label_html(dataset, html_path):
             # selected (only available for single-choice tasks)
             #"choice_auto_accept": True,
             "global_css": ".prodigy-button-reject, .prodigy-button-ignore {display: none}",
+            "custom_theme": {"cardMinWidth": 300, "cardMaxWidth": 1500, "smallText": 15},
+            "instructions": "./recipe/instructions.html",
         }
     }
 
