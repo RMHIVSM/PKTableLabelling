@@ -1,4 +1,5 @@
 # imports
+import random
 from typing import List
 import os
 from lxml import etree
@@ -6,6 +7,7 @@ from itertools import chain
 from io import StringIO
 import jsonlines
 from tqdm import tqdm
+
 
 def stringify_children(node):
     """
@@ -38,7 +40,6 @@ def tables_to_dict(path) -> List:
         label = table.find('label').text
         caption = stringify_children(table.find('caption'))
         table_xml = etree.tostring(table.find('table'), encoding='unicode')
-        # table_xml = table_xml[2:-1]
         table_dict = {'pmid': pmid,
                       'label': label,
                       'caption': caption.strip(),
@@ -61,7 +62,7 @@ def write_html(table_dicts, path):
         tree_parsed.write(path)
 
 
-def create_jsonl(table_dicts, json_path):
+def create_jsonl(table_list, json_path):
     """Function to convert XML table dictionary to HTML then to JSONL file for input to prodigy"""
 
     html_template = "<!DOCTYPE html><html><body><h4>{0}</h4><head><style> table, th, td {{border: 1px solid black;}}</style></head><body>{1}</body></html>"
@@ -92,7 +93,7 @@ def get_file_list(my_dir):
 def apply_to_all(file_list):
     """Function to apply tables to dict to all files in file_list"""
     table_list = []
-    total_count= 0
+    total_count = 0
     for file in tqdm(file_list):
         try:
             table_dict = tables_to_dict(file)
@@ -100,7 +101,39 @@ def apply_to_all(file_list):
                 table_list += table_dict
         except Exception as err:
             pass
-            total_count+=1
+            total_count += 1
 
     print(f"(Total Count= {total_count}")
     return table_list
+
+
+def split_data(path_to_json, path_to_write):
+    """Function to read in json master file and split into trial, train, validation and test sets for labelling"""
+
+    with jsonlines.open(path_to_json) as reader:
+        json_list = []
+        for obj in reader:
+            json_list.append(obj)
+
+    random.Random(4).shuffle(json_list)
+    trial = json_list[:50]
+    remaining1 = json_list[50:]
+    with jsonlines.open(path_to_write + "trial_tableclass.jsonl", mode='w') as writer:
+        writer.write_all(trial)
+
+    train = remaining1[:2000]
+    remaining2 = remaining1[2000:]
+    with jsonlines.open(path_to_write + "train_tableclass.jsonl", mode='w') as writer:
+        writer.write_all(train)
+
+    val = remaining2[:500]
+    remaining3 = remaining2[500:]
+    with jsonlines.open(path_to_write + "val_tableclass.jsonl", mode='w') as writer:
+        writer.write_all(val)
+
+    test_tables = remaining3[:1000]
+    unused = remaining3[1000:]
+    with jsonlines.open(path_to_write + "test_tableclass.jsonl", mode='w') as writer:
+        writer.write_all(test_tables)
+    with jsonlines.open(path_to_write + "unused_tableclass.jsonl", mode='w') as writer:
+        writer.write_all(unused)
