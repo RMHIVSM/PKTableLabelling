@@ -5,17 +5,20 @@ OPTIONS = [
         {"id": 0, "text": "Non-compartmental Parameters"},
         {"id": 1, "text": "Compartmental Parameters"},
         {"id": 2, "text": "PBPK Parameters"},
-        {"id": 3, "text": "Unclear (Parameters)"},
-        {"id": 4, "text": "Covariates (Demographics)"},
-        {"id": 5, "text": "Covariates (Other)"},
-        {"id": 6, "text": "Not Relevant"},
+        {"id": 3, "text": "PK Concentrations/Observations"},
+        {"id": 4, "text": "Unclear (Parameters)"},
+        {"id": 5, "text": "Covariates (Demographics)"},
+        {"id": 6, "text": "Covariates (Doses)"}
+        {"id": 7, "text": "Covariates (Number of Samples)"}
+        {"id": 8, "text": "Covariates (Other)"},
+        {"id": 9, "text": "Not Relevant"},
 
 ]
 
 @prodigy.recipe("label-json")
 
-def label_html(dataset, html_path):
-     #Stream in htmls from a directory and label them from fixed field
+def label_json(dataset, html_path):
+    """Stream in json tables from a directory and label them from fixed field"""
 
     return {
         "dataset": dataset,
@@ -28,7 +31,7 @@ def label_html(dataset, html_path):
             #"choice_auto_accept": True,
             "global_css": ".prodigy-button-reject, .prodigy-button-ignore {display: none}",
             "custom_theme": {"cardMinWidth": 300, "cardMaxWidth": 1500, "smallText": 15},
-            "instructions": "./recipe/instructions.html",
+            "instructions": "./recipes/vicky/label-json-instructions.html",
         }
     }
 
