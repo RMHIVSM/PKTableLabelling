@@ -1,4 +1,4 @@
-# Run Prodigy on Local 
+# Run Prodigy Locally
 
 Installation instructions - from command line 
 
