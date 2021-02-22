@@ -10,7 +10,7 @@
   "validate": true,
   "auto_exclude_current": true,
   "instant_submit": false,
-  "feed_overlap": true,
+  "feed_overlap": false,
   "force_stream_order": true,
   "ui_lang": "en",
   "project_info": ["dataset", "session", "lang", "recipe_name", "view_id", "label"],

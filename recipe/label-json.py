@@ -5,13 +5,15 @@ OPTIONS = [
         {"id": 0, "text": "Non-compartmental Parameters"},
         {"id": 1, "text": "Compartmental Parameters"},
         {"id": 2, "text": "PBPK Parameters"},
-        {"id": 3, "text": "PK Concentrations/Observations"},
+        {"id": 3, "text": "PD Parameters"},
         {"id": 4, "text": "Unclear (Parameters)"},
-        {"id": 5, "text": "Covariates (Demographics)"},
+        {"id": 5, "text": "Covariates (Number of Subjects)"},
         {"id": 6, "text": "Covariates (Doses)"}
         {"id": 7, "text": "Covariates (Number of Samples)"}
-        {"id": 8, "text": "Covariates (Other)"},
-        {"id": 9, "text": "Not Relevant"},
+        {"id": 8, "text": "Covariates (Demographics)"},
+        {"id": 9, "text": "Parameter-Covariate Relationships"},
+        {"id": 10, "text": "Covariates (Other)"},
+        {"id": 11, "text": "Not Relevant"},
 
 ]
 
