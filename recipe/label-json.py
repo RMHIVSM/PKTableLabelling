@@ -1,44 +1,48 @@
 import prodigy
+import prodigy
 from prodigy.components.loaders import JSONL
 
 OPTIONS = [
-        {"id": 0, "text": "Non-compartmental Parameters"},
-        {"id": 1, "text": "Compartmental Parameters"},
-        {"id": 2, "text": "PBPK Parameters"},
-        {"id": 3, "text": "PD Parameters"},
-        {"id": 4, "text": "Unclear (Parameters)"},
-        {"id": 5, "text": "Covariates (Number of Subjects)"},
-        {"id": 6, "text": "Covariates (Doses)"}
-        {"id": 7, "text": "Covariates (Number of Samples)"}
-        {"id": 8, "text": "Covariates (Demographics)"},
-        {"id": 9, "text": "Parameter-Covariate Relationships"},
-        {"id": 10, "text": "Covariates (Other)"},
-        {"id": 11, "text": "Not Relevant"},
+    {"id": 0, "text": "Non-compartmental Parameters"},
+    {"id": 1, "text": "Compartmental Parameters"},
+    {"id": 2, "text": "Parameter-Covariate Relationships (ratios/percentages)"},
+    {"id": 3, "text": "PBPK Parameters"},
+    {"id": 4, "text": "PD Parameters"},
+    {"id": 5, "text": "Covariates (Doses, Number of Subjects, Samples Timings)"},
+    {"id": 6, "text": "Covariates (Demographics)"},
+    {"id": 7, "text": "Covariates (Other)"},
+    {"id": 8, "text": "Not Relevant"},
 
 ]
 
-@prodigy.recipe("label-json")
 
+@prodigy.recipe("label-json")
 def label_json(dataset, html_path):
     """Stream in json tables from a directory and label them from fixed field"""
 
     return {
         "dataset": dataset,
-        "stream": get_stream(html_path),
-        "view_id": "choice",
+        "stream": list(get_stream(html_path)),
+        "view_id": "blocks",
         "config": {
+            "show_flag": True,
             "choice_style": "multiple",  # or "single"
             # Automatically accept and submit the answer if an option is
             # selected (only available for single-choice tasks)
-            #"choice_auto_accept": True,
+            # "choice_auto_accept": True,
             "global_css": ".prodigy-button-reject, .prodigy-button-ignore {display: none}",
             "custom_theme": {"cardMinWidth": 300, "cardMaxWidth": 1500, "smallText": 15},
-            "instructions": "./recipes/vicky/label-json-instructions.html",
+            #"instructions": "./recipes/vicky/label-json-instructions.html",
+            "blocks": [
+                {"view_id": "choice"},
+                {"view_id": "text_input", "field_rows": 3, "field_label": "Please write any comments here"},
+            ]
         }
     }
 
+
 def get_stream(html_path):
-        # Load the directory of images and add options to each task
+    # Load the directory of images and add options to each task
 
     stream = JSONL(html_path)
 

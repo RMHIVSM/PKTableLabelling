@@ -16,7 +16,6 @@
   "project_info": ["dataset", "session", "lang", "recipe_name", "view_id", "label"],
   "show_stats": false,
   "hide_meta": false,
-  "show_flag": false,
   "swipe": false,
   "swipe_gestures": { "left": "accept", "right": "reject" },
   "split_sents_threshold": false,
