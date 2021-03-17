@@ -33,7 +33,7 @@ pip install <prodigy-dir>/prodigy-<version>.whl
 ```
 ## Run recipe locally  
 ```
-python -m prodigy label-json tables_trial_labels data/json/pmctables_json.jsonl -F recipe/label-json.py
+python -m prodigy label-json tables_trial_labels data/json/pmctables.jsonl -F recipe/label-json.py
 ```
 ## Get annotations out 
 
