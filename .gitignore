@@ -11,3 +11,5 @@
 /recipe/pmctables_json.jsonl
 /data/out/
 /data/json/
+/.idea
+/pk_tables.egg-info

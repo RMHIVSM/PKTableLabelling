@@ -3,18 +3,14 @@ import prodigy
 from prodigy.components.loaders import JSONL
 
 OPTIONS = [
-    {"id": 0, "text": "Non-compartmental Parameters"},
-    {"id": 1, "text": "Compartmental Parameters"},
-    {"id": 2, "text": "Parameter-Covariate Relationships (ratios/percentages)"},
-    {"id": 3, "text": "PBPK Parameters"},
-    {"id": 4, "text": "PD Parameters"},
-    {"id": 5, "text": "Covariates (Doses, Number of Subjects, Samples Timings)"},
-    {"id": 6, "text": "Covariates (Demographics)"},
-    {"id": 7, "text": "Covariates (Other)"},
-    {"id": 8, "text": "Not Relevant"},
+    {"id": 1, "text": "Doses"},
+    {"id": 2, "text": "Number of Subjects"},
+    {"id": 3, "text": "Samples Timings"},
+    {"id": 4, "text": "Demographics"},
+    {"id": 5, "text": "Other (Covariates)"},
+    {"id": 6, "text": "Not Relevant"},
 
 ]
-
 
 @prodigy.recipe("label-json")
 def label_json(dataset, html_path):
@@ -30,8 +26,10 @@ def label_json(dataset, html_path):
             # Automatically accept and submit the answer if an option is
             # selected (only available for single-choice tasks)
             # "choice_auto_accept": True,
+            "feed_overlap": True,
+            "force_stream_order": True,
             "global_css": ".prodigy-button-reject, .prodigy-button-ignore {display: none}",
-            "custom_theme": {"cardMinWidth": 300, "cardMaxWidth": 1500, "smallText": 15},
+            "custom_theme": {"cardMinWidth": 300, "cardMaxWidth": 1500, "smallText": 15, "show_flag": True},
             #"instructions": "./recipes/vicky/label-json-instructions.html",
             "blocks": [
                 {"view_id": "choice"},
