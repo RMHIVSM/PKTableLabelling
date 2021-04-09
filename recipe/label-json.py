@@ -7,7 +7,7 @@ OPTIONS = [
     {"id": 2, "text": "Number of Subjects"},
     {"id": 3, "text": "Samples Timings"},
     {"id": 4, "text": "Demographics"},
-    {"id": 5, "text": "Other (Covariates)"},
+    {"id": 5, "text": "Other"},
     {"id": 6, "text": "Not Relevant"},
 
 ]
