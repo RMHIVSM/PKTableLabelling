@@ -17,7 +17,9 @@ Start Review Session
 prodigy review final-covs100 tableclass-test-covs-100-gill,tableclass-test-covs-100-frank,tableclass-test-covs-100-joe,tableclass-test-covs-100-vicky -v choice  
 prodigy review final-params100 tableclass-test-params-100-gill,tableclass-test-params-100-frank,tableclass-test-params-100-joe,tableclass-test-params-100-vicky -v choice
 prodigy review final-covs250B tableclass-test-covs-250B-vicky,tableclass-test-covs-250B-pum,tableclass-test-covs-250B-frank,tableclass-test-covs-250B-palang -v choice
-prodigy review final-params250B tableclass-test-params-250B-vicky,tableclass-test-params-250B-pum,tableclass-test-params-250B-frank,tableclass-test-params-250B-palang -v choice   
+prodigy review final-params250B tableclass-test-params-250B-vicky,tableclass-test-params-250B-pum,tableclass-test-params-250B-frank,tableclass-test-params-250B-palang -v choice 
+prodigy review final-params250A tableclass-test-params-250A-vicky,tableclass-test-params-250A-gill,tableclass-test-params-250A-ferran,tableclass-test-params-250A-joe -v choice
+prodigy review final-covs250A tableclass-test-covs-250B-vicky,tableclass-test-covs-250A-gill,tableclass-test-covs-250A-ferran,tableclass-test-covs-250A-joe -v choice   
 ```
 Get Final Reviewed Annotations Out
 ```
