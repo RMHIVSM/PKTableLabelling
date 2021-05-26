@@ -14,7 +14,8 @@ python ./scripts/split_annotations.py --azure-file-name tableclass-test-covs-250
 python ./scripts/split_annotations.py --azure-file-name tableclass-test-params-200A-output.jsonl --save-local False
 python ./scripts/split_annotations.py --azure-file-name tableclass-test-covs-200A-output.jsonl --save-local False
 python ./scripts/split_annotations.py --azure-file-name tableclass-test-params-200B-output.jsonl --save-local False
-python ./scripts/split_annotations.py --azure-file-name tableclass-test-covs-200B-output.jsonl --save-local False
+python ./scripts/split_annotations.py --azure-file-name tableclass-train-params-500-output.jsonl --save-local False
+python ./scripts/split_annotations.py --azure-file-name tableclass-train-covs-500-output.jsonl --save-local False
 ```
 Start Review Session
 ``` 
@@ -26,8 +27,8 @@ prodigy review final-params250A tableclass-test-params-250A-vicky,tableclass-tes
 prodigy review final-covs250A tableclass-test-covs-250A-vicky,tableclass-test-covs-250A-gill,tableclass-test-covs-250A-joe -v choice   
 prodigy review final-params200B tableclass-test-params-200B-vicky,tableclass-test-params-200B-pum,tableclass-test-params-200B-palang,tableclass-test-params-200B-frank -v choice
 prodigy review final-covs200B tableclass-test-covs-200B-vicky,tableclass-test-covs-200B-pum,tableclass-test-covs-200B-palang,tableclass-test-covs-200B-frank -v choice   
-prodigy review final-params200A tableclass-test-params-200A-vicky,tableclass-test-params-200A-gill,tableclass-test-params-200A-joe,tableclass-test-params-200A-frank -v choice
-prodigy review final-covs200A tableclass-test-covs-200A-vicky,tableclass-test-covs-200A-gill,tableclass-test-covs-200A-joe,tableclass-test-covs-200A-frank -v choice   
+prodigy review final-params200A tableclass-test-params-200A-vicky,tableclass-test-params-200A-gill,tableclass-test-params-200A-frank,tableclass-test-params-200A-palang -v choice
+prodigy review final-covs200A tableclass-test-covs-200A-vicky,tableclass-test-covs-200A-gill,tableclass-test-covs-200A-palang,tableclass-test-covs-200A-frank -v choice   
 ```
 Get Final Reviewed Annotations Out
 ```
@@ -39,4 +40,6 @@ python -m prodigy db-out final-covs250B > ./data/final-out//final-test-covs250B.
 python -m prodigy db-out final-params250B > ./data/final-out/final-test-params250B.jsonl
 python -m prodigy db-out final-covs250A > ./data/final-out//final-test-covs250A.jsonl
 python -m prodigy db-out final-params250A > ./data/final-out/final-test-params250A.jsonl
+python -m prodigy db-out final-covs200A > ./data/final-out//final-test-covs200A.jsonl
+python -m prodigy db-out final-params200A > ./data/final-out/final-test-params200A.jsonl
 ```

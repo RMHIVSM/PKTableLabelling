@@ -1,4 +1,5 @@
 # imports
+import glob
 import random
 from typing import List
 import os
@@ -7,6 +8,7 @@ from itertools import chain
 from io import StringIO
 import jsonlines
 from tqdm import tqdm
+import json
 
 
 def stringify_children(node):
@@ -68,7 +70,7 @@ def create_jsonl(table_list, json_path):
     html_template = "<!DOCTYPE html><html><body><h4>{0}</h4><head><style> table, th, td {{border: 1px solid black;}}</style></head><body>{1}</body></html>"
 
     html_data = []
-    for i in table_dicts:
+    for i in table_list:
         html = html_template.format(i["caption"], i["table"])
         text = "Pmid= {}:Table= {}".format(i["pmid"], i["label"])
         html_data.append(dict(html=html, text=text))
@@ -87,6 +89,16 @@ def get_file_list(my_dir):
         else:
             continue
 
+    return file_list
+
+
+def file_list_folders(rootdir):
+    file_list= []
+    for subdir, dirs, files in os.walk(rootdir):
+        for file in files:
+            if file.endswith(".nxml"):
+                filename= [os.path.join(subdir, file).replace("\\", "/")]
+                file_list+= filename
     return file_list
 
 
@@ -137,3 +149,4 @@ def split_data(path_to_json, path_to_write):
         writer.write_all(test_tables)
     with jsonlines.open(path_to_write + "unused_tableclass.jsonl", mode='w') as writer:
         writer.write_all(unused)
+
