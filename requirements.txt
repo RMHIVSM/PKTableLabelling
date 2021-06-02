@@ -1,1 +1,7 @@
 numpy==1.19.5
+
+prodigy~=1.10.5
+jsonlines~=2.0.0
+setuptools~=52.0.0
+lxml~=4.6.3
+tqdm~=4.60.0

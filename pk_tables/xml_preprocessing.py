@@ -10,7 +10,13 @@ import jsonlines
 from tqdm import tqdm
 import json
 
+def stringify_children(node):
+    """
+    Filters and removes possible Nones in texts and tails
+    """
+    return ''.join(node.itertext())
 
+'''
 def stringify_children(node):
     """
     Filters and removes possible Nones in texts and tails
@@ -19,14 +25,14 @@ def stringify_children(node):
              list(chain(*([c.text, c.tail] for c in node.getchildren()))) +
              [node.tail])
     return ''.join(filter(None, parts))
+'''
 
-
-def tables_to_dict(path) -> List:
+def tables_to_dict(path_to_file) -> List:
     """
     Converts tables in xml papers to dictionary
     """
 
-    tree = etree.parse(path)
+    tree = etree.parse(path_to_file)
     root = tree.getroot()
     tables = tree.xpath("//body//sec//table-wrap")
     article_info = tree.xpath("//front//article-meta")
