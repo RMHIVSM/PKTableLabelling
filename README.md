@@ -16,6 +16,10 @@ python ./scripts/split_annotations.py --azure-file-name tableclass-test-covs-200
 python ./scripts/split_annotations.py --azure-file-name tableclass-test-params-200B-output.jsonl --save-local False
 python ./scripts/split_annotations.py --azure-file-name tableclass-train-params-500-output.jsonl --save-local False
 python ./scripts/split_annotations.py --azure-file-name tableclass-train-covs-500-output.jsonl --save-local False
+python ./scripts/split_annotations.py --azure-file-name tableclass-train-params-500to750-output.jsonl --save-local False
+python ./scripts/split_annotations.py --azure-file-name tableclass-train-covs-500to750-output.jsonl --save-local False
+python ./scripts/split_annotations.py --azure-file-name tableclass-train-params-750to1000-output.jsonl --save-local False
+python ./scripts/split_annotations.py --azure-file-name tableclass-train-covs-750to1000-output.jsonl --save-local False
 ```
 Start Review Session
 ``` 

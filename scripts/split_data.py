@@ -7,26 +7,24 @@ import random
 #split_data("../data/json/pmctables.jsonl", "../data/json/")
 
 
-with jsonlines.open("../data/json/train_tableclass.jsonl") as reader:
+with jsonlines.open("../data/final-out-concat/final_data/final-out-test1000.jsonl") as reader:
         json_list = []
         for obj in reader:
             json_list.append(obj)
 
         random.Random(4).shuffle(json_list)
-        train_500 = json_list[:500]
-        train_1000 = json_list[500:1000]
-        train_1500 = json_list[1000:1500]
-        train_2000 = json_list[1500:2000]
+        builder_test100 = json_list[:100]
+        builder_val100 = json_list[100:200]
+        builder_train800 = json_list[200:1000]
 
-        with jsonlines.open("../data/json/" + "train_500.jsonl", mode='w') as writer:
-            writer.write_all(train_500)
+        with jsonlines.open("../data/final-out-concat/" + "builder_test100.jsonl", mode='w') as writer:
+            writer.write_all(builder_test100)
 
-        with jsonlines.open("../data/json/" + "train_1000.jsonl", mode='w') as writer:
-            writer.write_all(train_1000)
+        with jsonlines.open("../data/final-out-concat/" + "builder_val100.jsonl", mode='w') as writer:
+            writer.write_all(builder_val100)
 
-        with jsonlines.open("../data/json/" + "train_1500.jsonl", mode='w') as writer:
-            writer.write_all(train_1500)
+        with jsonlines.open("../data/final-out-concat/" + "builder_train800.jsonl", mode='w') as writer:
+            writer.write_all(builder_train800)
 
-        with jsonlines.open("../data/json/" + "train_2000.jsonl", mode='w') as writer:
-            writer.write_all(train_2000)
+
 

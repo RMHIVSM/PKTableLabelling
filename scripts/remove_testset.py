@@ -35,7 +35,10 @@ def remove_testset(check_file, out_file):
     with jsonlines.open(out_file, mode='w') as writer:
         writer.write_all(json_uniques)
 
+'''
 remove_testset("../data/json/all_pmcs/A-Bpmctables.jsonl", "../data/json/test_removed/A-BpmctablesNotest.jsonl")
 remove_testset("../data/json/all_pmcs/C-Hpmctables.jsonl", "../data/json/test_removed/C-HpmctablesNotest.jsonl")
 remove_testset("../data/json/all_pmcs/I-Npmctables.jsonl", "../data/json/test_removed/I-NpmctablesNotest.jsonl")
 remove_testset("../data/json/all_pmcs/O-Zpmctables.jsonl", "../data/json/test_removed/O-ZpmctablesNotest.jsonl")
+'''
+remove_testset("../data/json/PKpmctables.jsonl", "../data/json/test_removed/PKpmctablesNotest.jsonl")
