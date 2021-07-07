@@ -7,9 +7,9 @@
 /.idea/*
 /pk_tables.egg-info
 /data/*
-/data/json/
 /data/out/
 /data/final-out/
 /data/json/
 /data/out/
 /pk_tables.egg-info/
+/data/json/
