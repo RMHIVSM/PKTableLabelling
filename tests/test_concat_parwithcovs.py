@@ -1,28 +1,17 @@
 #imports
 from pk_tables.concat_parwithcovs import remove_notrel
+from pk_tables.concat_parwithcovs import concat_lists, labels_update
 
-covs_list = [{"text": 1, "accept": [1, 2]}, {"text": 2, "accept": [3, 4]}, {"text": 3, "accept": [5, 6]}]
-params_list = [{"text": 1, "accept": [1, 2]}, {"text": 2, "accept": [3, 4]}, {"text": 3, "accept": [5]}]
+covs_list = [{"text": 3, "accept": [3, 5, 6]}, {"text": 1, "accept": [1, 2]}, {"text": 2,"accept": [3, 4]}]
+params_list = [{"text": 3, "accept": [2, 5]}, {"text": 1, "accept": [1, 3]}, {"text": 2,"accept": [5, 4]}]
 
-test= remove_notrel(covs_list)
-print(test)
+labels_update(covs_list)
 
-def test_concat_parwithcovs():
-    params_file= "../data/final-out/final-test-params100.jsonl"
-    covs_file= "../data/final-out/final-test-covs100.jsonl"
+def test_concat_lists(params_list, covs_list):
+    concat_list= concat_lists(params_list, covs_list)
 
-    covs_list = [{"text": 1, "accept": [1, 2]}, {"text": 2,"accept": [3, 4]}, {"text": 3, "accept": [5, 6]}]
-    params_list = [{"text": 1,"accept": [1, 2]}, {"text": 2,"accept": [3, 4]}, {"text": 3, "accept": [5]}]
+    assert concat_list == [{'text': 3, 'accept': [2, 5, 8, 10]}, {'text': 1, 'accept': [1, 3, 6, 7]}, {'text': 2, 'accept': [5, 4, 8, 9]}]
 
-    for item in new_json_list:
-        if item["text"] ==1:
-            assert item["accept"] == [1,2,6,7]
+    remove_nr= remove_notrel(concat_list)
 
-
-    for item in new_json_list:
-        if item["text"] ==2:
-            assert item["accept"] == [3,4,8,9]
-
-    for item in new_json_list:
-        if item["text"] ==3:
-            assert item["accept"] == [10]
+    assert remove_nr == [{'text': 3, 'accept': [2, 8, 10]}, {'text': 1, 'accept': [1, 3, 6, 7]}, {'text': 2, 'accept': [4, 8, 9]}]

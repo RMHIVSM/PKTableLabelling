@@ -15,13 +15,10 @@ def concat_jsonl(in_file_dir: str, out_file_name: str):
 
     print(len(json_uniques))
 
-    with jsonlines.open("../data/final-out/train/" + out_file_name, mode='w') as writer:
+    with jsonlines.open("../data/final-out/test/" + out_file_name, mode='w') as writer:
         writer.write_all(json_uniques)
 
-concat_jsonl("../data/final-out/covs_train/", "final-out-covs-train1500.jsonl")
-concat_jsonl("../data/final-out/pars_train/", "final-out-pars-train1500.jsonl")
-#concat_jsonl("../data/final-out-concat/test/", "final-out-test1000.jsonl")
-#concat_jsonl("../data/final-out/pars_test/", "final-out-pars1000.jsonl")
+concat_jsonl("../data/final-out/covs_test/", "final-out-covs-test1000.jsonl")
+concat_jsonl("../data/final-out/pars_test/", "final-out-pars-test1000.jsonl")
 
-#concat_jsonl("../data/final-out/covs_test/", "final-out-covs1000.jsonl")
 

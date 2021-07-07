@@ -32,18 +32,15 @@ def labels_update(covs_list: List[dict]) -> List[dict]:
 
     return covs_list
 
-#covs_list = [{"text": 1, "accept": [1, 2]}, {"text": 2,"accept": [3, 4]}, {"text": 3, "accept": [5, 6]}]
-#new_labels= labels_update(covs_list)
-#print(new_labels)
-
 def concat_lists(params_list: List[dict], new_covs_list: List[dict]) -> List[dict]:
     """Function to concat 2 lists based on table ID and combine labels for params and covs"""
-    for elm2, elm1 in zip(new_covs_list, params_list):
-        if elm2['text'] == elm1['text']:
-            for x in elm2["accept"]:
-                if x not in elm1["accept"]:
-                    elm1['accept'].extend(elm2['accept'])
 
+    for elm1 in params_list:
+        for elm2 in new_covs_list:
+            if elm2['text'] == elm1['text']:
+                for x in elm2["accept"]:
+                    if x not in list(elm1["accept"]):
+                        elm1['accept'].append(x)
     return params_list
 
 
@@ -80,16 +77,10 @@ def concat_parwithcovs(par_file: str, cov_file: str, out_file: str, check_text: 
         if i["text"] == check_text:
             print(i["accept"])
 
-    with jsonlines.open("../data/final-out-concat/train/" + out_file, mode='w') as writer:
+    with jsonlines.open("../data/final-out-concat/test/" + out_file, mode='w') as writer:
         writer.write_all(final_json)
 
     print(f"Length of out list: {len(final_json)}")
-
-
-
-concat_parwithcovs(par_file="../data/final-out/train/final-out-pars-train1500.jsonl",
-                   cov_file="../data/final-out/train/final-out-covs-train1500.jsonl",
-                   out_file="final-train-concat-1500.jsonl", check_text="Pmid= 4999605:Table= Table 2")
 
 
 
