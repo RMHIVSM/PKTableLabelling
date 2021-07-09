@@ -4,6 +4,7 @@ Extract Tables from PubMed OA datasets xml files, annotate these with prodigy an
 
 Get labelled json file from azure and split based on annotator for review session.  
 ```
+python ./scripts/InterAnnAgg.py --azure-file-name tableclass-test-params-100-output.jsonl --save-local False
 python ./scripts/split_annotations.py --azure-file-name tableclass-trials-1-output.jsonl --save-local False
 python ./scripts/split_annotations.py --azure-file-name tableclass-test-covs-100-output.jsonl --save-local False
 python ./scripts/split_annotations.py --azure-file-name tableclass-test-params-100-output.jsonl --save-local False
